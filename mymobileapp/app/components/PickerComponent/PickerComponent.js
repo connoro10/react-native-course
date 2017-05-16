@@ -10,12 +10,26 @@ export default class PickerComponent extends Component
 		}
 	}
 
+  onValueChange(value){
+    this.setState({category: value});
+  }
+
   render()
   {
     return(
       <View>
-      <Picker />
-      <Text>Picker Component</Text>
+      <Picker
+      selectedValue = {this.state.category}
+      onValueChange={this.onValueChange.bind(this)}
+      prompt="Category"
+      enabled={true}
+      mode="dropdown"
+      >
+        <item label ="Technology" value="Technology"/>
+        <item label ="Business" value="Business"/>
+        <item label ="Cooking" value="Cooking"/>
+      </Picker>
+      <Text>Selected Category: {this.state.category}</Text>
       </View>
     )
   }
